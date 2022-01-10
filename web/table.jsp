@@ -50,7 +50,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="Admin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -102,7 +102,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="table.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
                             </a>
@@ -119,7 +119,7 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Tables</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="Admin.jsp">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
                         <div class="card mb-4">
@@ -135,10 +135,29 @@
                                 DataTable Example
                             </div>
                             <div class="card-body">
-                                <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"><div class="dataTable-top"><div class="dataTable-dropdown"><label><select class="dataTable-selector"><option value="5">5</option><option value="10" selected="">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option></select> entries per page</label></div><div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"></div></div><div class="dataTable-container"><table id="datatablesSimple" class="dataTable-table">
+                                <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+<!--                                    <div class="dataTable-top">
+                                        <div class="dataTable-dropdown">
+                                            <label>
+                                                <select class="dataTable-selector">
+                                                    <option value="5">5</option>
+                                                    <option value="10" selected="">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="25">25</option>
+                                                </select>
+                                                entries per page
+                                            </label>
+                                        </div>
+                                        <div class="dataTable-search">
+                                            <input class="dataTable-input" placeholder="Search..." type="text">
+                                        </div>
+                                    </div>-->
+                                    <div class="dataTable-container">
+                                        <table id="datatablesSimple" >
                                             <thead>
                                                 <tr>
-                                                    <th data-sortable="" style="width: 19.5967%;"><a href="#" class="dataTable-sorter">Name</a></th>
+                                                    <th data-sortable="" style="width: 19.0304%;" class="asc" onclick=""><a href="#" class="dataTable-sorter">Name</a></th>
                                                     <th data-sortable="" style="width: 28.8854%;"><a href="#" class="dataTable-sorter">Position</a></th>
                                                     <th data-sortable="" style="width: 15.6321%;"><a href="#" class="dataTable-sorter">Office</a></th>
                                                     <th data-sortable="" style="width: 9.28863%;"><a href="#" class="dataTable-sorter">Age</a></th>
@@ -606,7 +625,7 @@
                                     </tbody>
                                         </table>
                                     </div>
-                                    <div class="dataTable-bottom">
+<!--                                    <div class="dataTable-bottom">
                                         <div class="dataTable-info">Showing 1 to 10 of 57 entries</div>
                                         <nav class="dataTable-pagination">
                                             <ul class="dataTable-pagination-list">
@@ -619,7 +638,7 @@
                                                 <li class="pager"><a href="#" data-page="2">›</a></li>
                                             </ul>
                                         </nav>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>
@@ -642,7 +661,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="js/datatable.js"></script>
     </body>
 </html>
 

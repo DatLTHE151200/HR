@@ -102,7 +102,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="table.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
                             </a>
@@ -188,7 +188,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
-                                    <div class="dataTable-top">
+<!--                                    <div class="dataTable-top">
                                         <div class="dataTable-dropdown">
                                             <label>
                                                 <select class="dataTable-selector">
@@ -204,9 +204,9 @@
                                         <div class="dataTable-search">
                                             <input class="dataTable-input" placeholder="Search..." type="text">
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="dataTable-container">
-                                        <table id="datatablesSimple" class="dataTable-table">
+                                        <table id="datatablesSimple">
                                             <thead>
                                                 <tr>
                                                     <th data-sortable="" style="width: 19.5967%;"><a href="#" class="dataTable-sorter">Name</a></th>
@@ -677,7 +677,7 @@
                                     </tbody>
                                         </table>
                                     </div>
-                                    <div class="dataTable-bottom">
+<!--                                    <div class="dataTable-bottom">
                                         <div class="dataTable-info">Showing 1 to 10 of 57 entries</div>
                                         <nav class="dataTable-pagination">
                                             <ul class="dataTable-pagination-list">
@@ -690,7 +690,7 @@
                                                 <li class="pager"><a href="#" data-page="2">›</a></li>
                                             </ul>
                                         </nav>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>
@@ -716,7 +716,7 @@
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="js/datatable.js"></script>
     </body>
 </html>
 
