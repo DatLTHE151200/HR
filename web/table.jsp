@@ -163,6 +163,7 @@
                                                     <th data-sortable="" style="width: 9.28863%;"><a href="#" class="dataTable-sorter">Age</a></th>
                                                     <th data-sortable="" style="width: 15.179%;"><a href="#" class="dataTable-sorter">Start date</a></th>
                                                     <th data-sortable="" style="width: 11.4409%;"><a href="#" class="dataTable-sorter">Salary</a></th>
+                                                    <th data-sortable="" style="width: 11.4409%;"><a href="#">Actions</a></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -173,6 +174,14 @@
                                             <td>61</td>
                                             <td>2011/04/25</td>
                                             <td>$320,800</td>
+                                            <td>
+                                                <a class="btn" href="">
+                                                    <img src="img/edit_icon.png" height="20px" width="20px"/>
+                                                </a>
+                                                <a class="btn" href="">
+                                                    <img src="img/trash_icon.png" height="20px" width="20px"/>
+                                                </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Garrett Winters</td>

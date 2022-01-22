@@ -11699,3 +11699,12 @@ body {
   font-size: 0.75rem;
   border-radius: 0.25rem !important;
 }
+
+.btn-icon{
+  height: 20px !important;
+  width: 20px !important;
+  font-size: 0.75rem;
+  border-radius: 0.25rem !important;
+  background-size: cover;
+  background-position: center center;
+}
