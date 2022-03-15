@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.vienmv.model.User;
-import com.vienmv.service.UserService;
-import com.vienmv.service.impl.UserServiceImpl;
-import com.vienmv.util.Constant;
+//
+//import com.vienmv.model.User;
+//import com.vienmv.service.UserService;
+//import com.vienmv.service.impl.UserServiceImpl;
+//import com.vienmv.util.Constant;
 
 public class LoginController extends HttpServlet {
 
@@ -22,7 +22,7 @@ public class LoginController extends HttpServlet {
 
         HttpSession session = req.getSession(false);
         if (session != null && session.getAttribute("account") != null) {
-            resp.sendRedirect(req.getContextPath() + "/waiting");
+            resp.sendRedirect("login");
             return;
         }
         // Check cookie
@@ -32,7 +32,7 @@ public class LoginController extends HttpServlet {
                 if (cookie.getName().equals("username")) {
                     session = req.getSession(true);
                     session.setAttribute("username", cookie.getValue());
-                    resp.sendRedirect(req.getContextPath() + "/waiting");
+                    resp.sendRedirect("login");
                     return;
                 }
             }

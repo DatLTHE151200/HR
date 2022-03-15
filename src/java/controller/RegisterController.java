@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.vienmv.service.UserService;
-import com.vienmv.service.impl.UserServiceImpl;
-import com.vienmv.tools.SendMail;
-import com.vienmv.util.Constant;
+//
+//import com.vienmv.service.UserService;
+//import com.vienmv.service.impl.UserServiceImpl;
+//import com.vienmv.tools.SendMail;
+import util.Constant;
 
 @WebServlet(urlPatterns = "/register")
 public class RegisterController extends HttpServlet {
