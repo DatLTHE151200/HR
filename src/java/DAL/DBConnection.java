@@ -56,7 +56,7 @@ public class DBConnection {
             ResultSet rs = stmt.executeQuery("select * from NhanViens");
             // show data
             while (rs.next()) {
-                System.out.println(rs.getInt(1) + "  " + rs.getString(2) 
+                System.out.println(rs.getString(1) + "  " + rs.getString(2) 
                         + "  " + rs.getString(3));
             }
             // close connection

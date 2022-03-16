@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.*;
 
 /**
@@ -27,8 +29,8 @@ public class UserDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
-            NhanVien user = new NhanVien();
             while (rs.next()) {
+                NhanVien user = new NhanVien();
                 user.setMaNhanVien(rs.getString("MaNhanVien"));
                 user.setMatKhau(rs.getString("MatKhau"));
                 user.setHoTen(rs.getString("HoTen"));
@@ -61,8 +63,8 @@ public class UserDAO {
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            NhanVien user = new NhanVien();
             while (rs.next()) {
+                NhanVien user = new NhanVien();
                 user.setMaNhanVien(rs.getString("MaNhanVien"));
                 user.setMatKhau(rs.getString("MatKhau"));
                 user.setHoTen(rs.getString("HoTen"));
@@ -197,4 +199,299 @@ public class UserDAO {
         }
     }
 
+    public void deleteUser(String id) {
+        String sql = "DELETE FROM dbo.NhanViens WHERE MaNhanVien = ?";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public List<ChucVuNhanVien> getListChucVu() {
+        List<ChucVuNhanVien> list = new ArrayList<>();
+        String sql = "SELECT* FROM dbo.ChucVuNhanViens";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChucVuNhanVien item = new ChucVuNhanVien();
+                item.setMaChucVu(rs.getString("MaChucVuNV"));
+                item.setTenChucVu(rs.getString("TenChucVu"));
+                item.setHSPC(rs.getDouble("HSPC"));
+                list.add(item);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public ChucVuNhanVien getChucVu(String id) {
+        String sql = "SELECT* FROM dbo.ChucVuNhanViens WHERE MaChucVuNV = ?";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChucVuNhanVien item = new ChucVuNhanVien();
+                item.setMaChucVu(rs.getString("MaChucVuNV"));
+                item.setTenChucVu(rs.getString("TenChucVu"));
+                item.setHSPC(rs.getDouble("HSPC"));
+                return item;
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public List<PhongBan> getListPhongBan() {
+        List<PhongBan> list = new ArrayList<>();
+        String sql = "SELECT* FROM dbo.PhongBans";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                PhongBan item = new PhongBan();
+                item.setMaPhongBan(rs.getString("MaPhongBan"));
+                item.setTenPhongBan(rs.getString("TenPhongBan"));
+                item.setDiaChi(rs.getString("DiaChi"));
+                item.setSdt_PhongBan(rs.getString("sdt_PhongBan"));
+                list.add(item);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public List<ChuyenNganh> getListChuyenNganh() {
+        List<ChuyenNganh> list = new ArrayList<>();
+        String sql = "SELECT* FROM dbo.ChuyenNganhs";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChuyenNganh item = new ChuyenNganh();
+                item.setMaChuyenNganh(rs.getString("MaChuyenNganh"));
+                item.setTenChuyenNganh(rs.getString("TenChuyenNganh"));
+                list.add(item);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public TrinhDoHocVan getHocVan(String id) {
+        String sql = "SELECT * FROM dbo.TrinhDoHocVans WHERE MaTrinhDoHocVan = ?";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                TrinhDoHocVan item = new TrinhDoHocVan();
+                item.setMaTrinhDoHocVan(rs.getString("MaTrinhDoHocVan"));
+                item.setTenTrinhDo(rs.getString("TenChucVu"));
+                item.setHeSoBac(rs.getDouble("HeSoBac"));
+                return item;
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public List<TrinhDoHocVan> getListHocVan() {
+        List<TrinhDoHocVan> list = new ArrayList<>();
+        String sql = "SELECT* FROM dbo.TrinhDoHocVans";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                TrinhDoHocVan item = new TrinhDoHocVan();
+                item.setMaTrinhDoHocVan(rs.getString("MaTrinhDoHocVan"));
+                item.setTenTrinhDo(rs.getString("TenTrinhDo"));
+                item.setHeSoBac(rs.getDouble("HeSoBac"));
+                list.add(item);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public void insertLuong(Luong luong) {
+        String sql = "INSERT INTO dbo.Luongs\n"
+                + "(\n"
+                + "    MaNhanVien,\n"
+                + "    LuongToiThieu,\n"
+                + "    HeSoLuong,\n"
+                + "    BHXH,\n"
+                + "    BHYT,\n"
+                + "    BHTN,\n"
+                + "    PhuCap,\n"
+                + "    ThueThuNhap\n"
+                + ")\n"
+                + "VALUES\n"
+                + "(   ?,  -- MaNhanVien - varchar(30)\n"
+                + "    ?,   -- LuongToiThieu - int\n"
+                + "    ?, -- HeSoLuong - float\n"
+                + "    ?, -- BHXH - float\n"
+                + "    ?, -- BHYT - float\n"
+                + "    ?, -- BHTN - float\n"
+                + "    ?, -- PhuCap - float\n"
+                + "    ?  -- ThueThuNhap - float\n"
+                + "    )";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, luong.getMaNhanVien());
+            ps.setInt(2, luong.getLuongToiThieu());
+            ps.setDouble(3, luong.getHeSoLuong());
+            ps.setDouble(4, luong.getBHXH());
+            ps.setDouble(5, luong.getBHYT());
+            ps.setDouble(6, luong.getBHTN());
+            ps.setDouble(7, luong.getPhuCap());
+            ps.setDouble(8, luong.getThueThuNhap());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateLuong(Luong luong) {
+        String sql = "UPDATE dbo.Luongs\n"
+                + "SET\n"
+                + "LuongToiThieu = ?,\n"
+                + "HeSoLuong = ?,\n"
+                + "BHXH = ?,\n"
+                + "BHYT = ?,\n"
+                + "BHTN = ?,\n"
+                + "PhuCap = ?,\n"
+                + "ThueThuNhap = ?\n"
+                + "WHERE MaNhanVien = ?";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(8, luong.getMaNhanVien());
+            ps.setInt(1, luong.getLuongToiThieu());
+            ps.setDouble(2, luong.getHeSoLuong());
+            ps.setDouble(3, luong.getBHXH());
+            ps.setDouble(4, luong.getBHYT());
+            ps.setDouble(5, luong.getBHTN());
+            ps.setDouble(6, luong.getPhuCap());
+            ps.setDouble(7, luong.getThueThuNhap());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteLuong(String id) {
+        String sql = "DELETE FROM dbo.NhanViens WHERE MaNhanVien = ?";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateBangLuong(Luong luong, int luongmoi) {
+        String sql = "INSERT INTO dbo.CapNhatLuongs\n"
+                + "(\n"
+                + "    MaNhanVien,\n"
+                + "    LuongHienTai,\n"
+                + "    LuongSauCapNhat,\n"
+                + "    BHXH,\n"
+                + "    BHYT,\n"
+                + "    BHTN,\n"
+                + "    PhuCap,\n"
+                + "    ThueThuNhap,\n"
+                + "    NgayCapNhat,\n"
+                + "    HeSoLuong\n"
+                + ")\n"
+                + "VALUES\n"
+                + "(   ?,        -- MaNhanVien - varchar(30)\n"
+                + "    ?,         -- LuongHienTai - int\n"
+                + "    ?,         -- LuongSauCapNhat - int\n"
+                + "    ?,       -- BHXH - float\n"
+                + "    ?,       -- BHYT - float\n"
+                + "    ?,       -- BHTN - float\n"
+                + "    ?,       -- PhuCap - float\n"
+                + "    ?,       -- ThueThuNhap - float\n"
+                + "    GETDATE(), -- NgayCapNhat - datetime\n"
+                + "    ?        -- HeSoLuong - float\n"
+                + "    )";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, luong.getMaNhanVien());
+            ps.setInt(2, luong.getLuongToiThieu());
+            ps.setDouble(3, luongmoi);
+            ps.setDouble(4, luong.getBHXH());
+            ps.setDouble(5, luong.getBHYT());
+            ps.setDouble(6, luong.getBHTN());
+            ps.setDouble(7, luong.getPhuCap());
+            ps.setDouble(8, luong.getThueThuNhap());
+            ps.setDouble(9, luong.getHeSoLuong());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public List<CapNhatLuong> getListBangLuong() {
+        List<CapNhatLuong> list = new ArrayList<>();
+        String sql = "SELECT * FROM dbo.CapNhatLuongs";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                CapNhatLuong item = new CapNhatLuong();
+                item.setMaNhanVien(rs.getString("MaNhanVien"));
+                item.setLuongHienTai(rs.getInt("LuongHienTai"));
+                item.setLuongSauCapNhat(rs.getInt("LuongSauCapNhat"));
+                item.setBHXH(rs.getDouble("BHXH"));
+                item.setBHYT(rs.getDouble("BHYT"));
+                item.setBHTN(rs.getDouble("BHTN"));
+                item.setPhuCap(rs.getDouble("PhuCap"));
+                item.setThueThuNhap(rs.getDouble("ThueThuNhap"));
+                item.setNgayCapNhat(rs.getDate("NgayCapNhat"));
+                list.add(item);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    
 }

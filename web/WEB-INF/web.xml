@@ -8,6 +8,14 @@
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>controller.RegisterController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NhanVienController</servlet-name>
+        <servlet-class>controller.NhanVienController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ThemNhanVien</servlet-name>
+        <servlet-class>controller.ThemNhanVien</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NhanVienController</servlet-name>
+        <url-pattern>/NhanVien</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ThemNhanVien</servlet-name>
+        <url-pattern>/NhanVien/ThemNhanVien</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
