@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package controller;
-
 import DAL.*;
 import model.*;
 import java.util.*;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class NhanVienController extends HttpServlet {
+public class LichSuLuongController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +31,18 @@ public class NhanVienController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-
         UserDAO udao = new UserDAO();
-        List<NhanVien> list = udao.getAllUser();
-        request.setAttribute("listNV", list);
-        request.getRequestDispatcher("NhanVien.jsp").forward(request, response);
+        String id = request.getParameter("id");
+        List<CapNhatLuong> listL = new ArrayList<>();
+        listL = udao.getListBangLuong();
+        NhanVien user = udao.getUser(id);
+        request.setAttribute("listL", listL);
+        request.setAttribute("user", user);
+        request.getRequestDispatcher("LichSuLuong.jsp");
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

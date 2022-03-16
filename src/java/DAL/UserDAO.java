@@ -6,6 +6,7 @@
 package DAL;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -136,7 +137,9 @@ public class UserDAO {
             ps.setString(1, user.getMaNhanVien());
             ps.setString(2, user.getMatKhau());
             ps.setString(3, user.getHoTen());
-            ps.setDate(4, (java.sql.Date) user.getNgaySinh());
+            long sn = user.getNgaySinh().getTime();
+            Date NgaySinh = new Date(sn);
+            ps.setDate(4,NgaySinh);
             ps.setString(5, user.getQueQuan());
             ps.setString(6, "");
             ps.setInt(7, user.getGioiTinh());
@@ -159,40 +162,43 @@ public class UserDAO {
         int roleId = 0;
         String sql = "UPDATE dbo.NhanViens\n"
                 + "SET\n"
-                + "HoTen = '',\n"
-                + "NgaySinh = '',\n"
-                + "QueQuan = '',\n"
-                + "HinhAnh = '',\n"
-                + "GioiTinh = '',\n"
-                + "DanToc = '',\n"
-                + "sdt_NhanVien = '',\n"
-                + "MaChucVuNV = '',\n"
-                + "TrangThai = '',\n"
-                + "MaPhongBan = '',\n"
-                + "MaHopDong = '',\n"
-                + "MaChuyenNganh = '',\n"
-                + "MaTrinhDoHocVan = '',\n"
-                + "CMND = ''\n"
-                + "WHERE MaNhanVien = ''";
+                + "MatKhau = ?, \n"
+                + "HoTen = ?,\n"
+                + "NgaySinh = ?,\n"
+                + "QueQuan = ?,\n"
+                + "HinhAnh = ?,\n"
+                + "GioiTinh = ?,\n"
+                + "DanToc = ?,\n"
+                + "sdt_NhanVien = ?,\n"
+                + "MaChucVuNV = ?,\n"
+                + "TrangThai = ?,\n"
+                + "MaPhongBan = ?,\n"
+                + "MaHopDong = ?,\n"
+                + "MaChuyenNganh = ?,\n"
+                + "MaTrinhDoHocVan = ?,\n"
+                + "CMND = ?\n"
+                + "WHERE MaNhanVien = ?";
         Connection conn = DBConnection.open();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, user.getMaNhanVien());
-            ps.setString(2, user.getMatKhau());
-            ps.setString(3, user.getHoTen());
-            ps.setDate(4, (java.sql.Date) user.getNgaySinh());
-            ps.setString(5, user.getQueQuan());
-            ps.setString(6, "");
-            ps.setInt(7, user.getGioiTinh());
-            ps.setString(8, user.getDanToc());
-            ps.setString(9, user.getSdt_NhanVien());
-            ps.setString(10, user.getMaChucVuNV());
-            ps.setInt(11, roleId);
-            ps.setString(12, user.getMaPhongBan());
-            ps.setString(13, user.getMaHopDong());
-            ps.setString(14, user.getMaChuyenNganh());
-            ps.setString(15, user.getMaTrinhDoHocVan());
-            ps.setString(16, user.getCMND());
+            ps.setString(16, user.getMaNhanVien());
+            ps.setString(1, user.getMatKhau());
+            ps.setString(2, user.getHoTen());
+            long sn = user.getNgaySinh().getTime();
+            Date NgaySinh = new Date(sn);
+            ps.setDate(3, NgaySinh);
+            ps.setString(4, user.getQueQuan());
+            ps.setString(5, "");
+            ps.setInt(6, user.getGioiTinh());
+            ps.setString(7, user.getDanToc());
+            ps.setString(8, user.getSdt_NhanVien());
+            ps.setString(9, user.getMaChucVuNV());
+            ps.setInt(10, roleId);
+            ps.setString(11, user.getMaPhongBan());
+            ps.setString(12, user.getMaHopDong());
+            ps.setString(13, user.getMaChuyenNganh());
+            ps.setString(14, user.getMaTrinhDoHocVan());
+            ps.setString(15, user.getCMND());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -257,7 +263,7 @@ public class UserDAO {
 
     public List<PhongBan> getListPhongBan() {
         List<PhongBan> list = new ArrayList<>();
-        String sql = "SELECT* FROM dbo.PhongBans";
+        String sql = "SELECT * FROM dbo.PhongBans";
         Connection conn = DBConnection.open();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -278,9 +284,29 @@ public class UserDAO {
         return list;
     }
 
+    public ChuyenNganh getChuyenNganh() {
+        String sql = "SELECT * FROM dbo.ChuyenNganhs WHERE MaChuyenNganh = ?";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChuyenNganh item = new ChuyenNganh();
+                item.setMaChuyenNganh(rs.getString("MaChuyenNganh"));
+                item.setTenChuyenNganh(rs.getString("TenChuyenNganh"));
+                return item;
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    
     public List<ChuyenNganh> getListChuyenNganh() {
         List<ChuyenNganh> list = new ArrayList<>();
-        String sql = "SELECT* FROM dbo.ChuyenNganhs";
+        String sql = "SELECT * FROM dbo.ChuyenNganhs";
         Connection conn = DBConnection.open();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -309,7 +335,7 @@ public class UserDAO {
             while (rs.next()) {
                 TrinhDoHocVan item = new TrinhDoHocVan();
                 item.setMaTrinhDoHocVan(rs.getString("MaTrinhDoHocVan"));
-                item.setTenTrinhDo(rs.getString("TenChucVu"));
+                item.setTenTrinhDo(rs.getString("TenTrinhDo"));
                 item.setHeSoBac(rs.getDouble("HeSoBac"));
                 return item;
             }
@@ -343,6 +369,60 @@ public class UserDAO {
         return list;
     }
 
+    public Luong getLuong(String id) {
+        String sql = "SELECT * FROM dbo.Luongs WHERE MaNhanVien = ?";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Luong item = new Luong();
+                item.setMaNhanVien(rs.getString("MaNhanVien"));
+                item.setLuongToiThieu(rs.getInt("LuongToiThieu"));
+                item.setHeSoLuong(rs.getDouble("HeSoLuong"));
+                item.setBHXH(rs.getDouble("BHXH"));
+                item.setBHYT(rs.getDouble("BHYT"));
+                item.setBHTN(rs.getDouble("BHTN"));
+                item.setPhuCap(rs.getDouble("PhuCap"));
+                item.setThueThuNhap(rs.getDouble("ThueThuNhap"));
+                return item;
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    
+    public List<Luong> getListLuong() {
+        List<Luong> list = new ArrayList<>();
+        String sql = "SELECT * FROM dbo.Luongs";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Luong item = new Luong();
+                item.setMaNhanVien(rs.getString("MaNhanVien"));
+                item.setLuongToiThieu(rs.getInt("LuongToiThieu"));
+                item.setHeSoLuong(rs.getDouble("HeSoLuong"));
+                item.setBHXH(rs.getDouble("BHXH"));
+                item.setBHYT(rs.getDouble("BHYT"));
+                item.setBHTN(rs.getDouble("BHTN"));
+                item.setPhuCap(rs.getDouble("PhuCap"));
+                item.setThueThuNhap(rs.getDouble("ThueThuNhap"));
+                list.add(item);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+    
     public void insertLuong(Luong luong) {
         String sql = "INSERT INTO dbo.Luongs\n"
                 + "(\n"

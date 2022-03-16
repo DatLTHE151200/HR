@@ -20,10 +20,11 @@ public class test {
     public static void main(String args[]) {
         try {
             UserDAO udao = new UserDAO();
-            List<TrinhDoHocVan> list = udao.getListHocVan();
-            for (TrinhDoHocVan hv : list) {
-                System.out.println(hv.getMaTrinhDoHocVan() + ' ' + hv.getTenTrinhDo());
-            }
+            Luong hv = udao.getLuong("nhm");
+            System.out.println(hv.getLuongToiThieu());
+//            for (TrinhDoHocVan hv : list) {
+//                System.out.println(hv.getMaTrinhDoHocVan() + ' ' + hv.getTenTrinhDo());
+//            }
             
         } catch (Exception ex) {
             ex.printStackTrace();

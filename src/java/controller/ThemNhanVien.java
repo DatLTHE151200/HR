@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package controller;
+
 import DAL.*;
 import model.*;
 import java.util.*;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ThemNhanVienController extends HttpServlet {
+public class ThemNhanVien extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,37 +36,45 @@ public class ThemNhanVienController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            UserDAO udao = new UserDAO();
-            NhanVien nv = new NhanVien();
-            
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            String MaNhanVien = request.getParameter("MaNhanVien");
-            String password = request.getParameter("Password");
-            String HoTen = request.getParameter("HoTen");
-            String ngaysinh = request.getParameter("NgaySinh");
-            Date NgaySinh = format.parse(ngaysinh);
-            String gender = request.getParameter("GioiTinh");
-            int GioiTinh = Integer.parseInt(gender);
-            String ChucVu = request.getParameter("ChucVu");
-            String PhongBan = request.getParameter("PhongBan");
-            String ChuyenNganh = request.getParameter("ChuyenNganh");
-            String TrinhDoHocVan = request.getParameter("TrinhDoHocVan");
-            
-            nv.setMaNhanVien(MaNhanVien);
-            nv.setMatKhau(password);
-            nv.setHoTen(HoTen);
-            nv.setNgaySinh(NgaySinh);
-            nv.setGioiTinh(GioiTinh);
-            nv.setMaChucVuNV(ChucVu);
-            nv.setMaPhongBan(PhongBan);
-            nv.setMaChuyenNganh(ChuyenNganh);
-            nv.setMaTrinhDoHocVan(TrinhDoHocVan);
-            udao.insertUser(nv);
-            
-            
-        }
+
+        //request.getRequestDispatcher("ThemNhanVien.jsp").forward(request, response);
+        UserDAO udao = new UserDAO();
+        NhanVien nv = new NhanVien();
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String MaNhanVien = request.getParameter("MaNhanVien");
+        String password = request.getParameter("Password");
+        String HoTen = request.getParameter("HoTen");
+        String ngaysinh = request.getParameter("NgaySinh");
+        Date NgaySinh = format.parse(ngaysinh);
+        String gender = request.getParameter("GioiTinh");
+        int GioiTinh = Integer.parseInt(gender);
+        String ChucVu = request.getParameter("ChucVu");
+        String PhongBan = request.getParameter("PhongBan");
+        String ChuyenNganh = request.getParameter("ChuyenNganh");
+        String TrinhDoHocVan = request.getParameter("TrinhDoHocVan");
+
+        nv.setMaNhanVien(MaNhanVien);
+        nv.setMatKhau(password);
+        nv.setHoTen(HoTen);
+        nv.setNgaySinh(NgaySinh);
+        nv.setGioiTinh(GioiTinh);
+        nv.setMaChucVuNV(ChucVu);
+        nv.setMaPhongBan(PhongBan);
+        nv.setMaChuyenNganh(ChuyenNganh);
+        nv.setMaTrinhDoHocVan(TrinhDoHocVan);
+        udao.insertUser(nv);
+
+        double PhuCap = udao.getChucVu(ChucVu).getHSPC();
+        double HeSoLuong = udao.getHocVan(TrinhDoHocVan).getHeSoBac();
+
+        Luong luong = new Luong(MaNhanVien, 3000000, HeSoLuong, 8, 1.5, 1, PhuCap, 0);
+        udao.insertLuong(luong);
+
+        response.sendRedirect("NhanVien");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -83,7 +92,8 @@ public class ThemNhanVienController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(ThemNhanVienController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThemNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
         }
     }
 
@@ -101,7 +111,8 @@ public class ThemNhanVienController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(ThemNhanVienController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThemNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
         }
     }
 

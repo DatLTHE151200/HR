@@ -7,7 +7,6 @@ package controller;
 
 import DAL.*;
 import model.*;
-import java.util.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class NhanVienController extends HttpServlet {
+public class UpdateLuongController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,14 +34,32 @@ public class NhanVienController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-
+        
         UserDAO udao = new UserDAO();
-        List<NhanVien> list = udao.getAllUser();
-        request.setAttribute("listNV", list);
-        request.getRequestDispatcher("NhanVien.jsp").forward(request, response);
+        
+        String MaNhanVien = request.getParameter("MaNhanVien");
+        int LuongToiThieu = Integer.parseInt(request.getParameter("LuongToiThieu")) ;
+        int LuongSauCapNhat = Integer.parseInt(request.getParameter("LuongSauCapNhat"));
+        Double HeSoLuong = Double.parseDouble(request.getParameter("HeSoLuong"));
+        Double BHXH = Double.parseDouble(request.getParameter("BHXH"));
+        Double BHYT = Double.parseDouble(request.getParameter("BHYT"));
+        Double BHTN = Double.parseDouble(request.getParameter("BHTN"));
+        Double ThueThuNhap = Double.parseDouble(request.getParameter("ThueThuNhap"));
+        
+        Luong luong = udao.getLuong(MaNhanVien);
+        udao.updateBangLuong(luong, LuongSauCapNhat);
+        luong.setLuongToiThieu(LuongSauCapNhat);
+        luong.setHeSoLuong(HeSoLuong);
+        luong.setBHXH(BHXH);
+        luong.setBHYT(BHYT);
+        luong.setBHTN(BHTN);
+        luong.setThueThuNhap(ThueThuNhap);
+        udao.updateLuong(luong);
+        
+        response.sendRedirect("Luong");
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

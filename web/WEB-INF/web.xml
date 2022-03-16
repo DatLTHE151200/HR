@@ -16,6 +16,22 @@
         <servlet-name>ThemNhanVien</servlet-name>
         <servlet-class>controller.ThemNhanVien</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateNhanVienController</servlet-name>
+        <servlet-class>controller.UpdateNhanVienController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LuongController</servlet-name>
+        <servlet-class>controller.LuongController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateLuongController</servlet-name>
+        <servlet-class>controller.UpdateLuongController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LichSuLuongController</servlet-name>
+        <servlet-class>controller.LichSuLuongController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -30,7 +46,23 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ThemNhanVien</servlet-name>
-        <url-pattern>/NhanVien/ThemNhanVien</url-pattern>
+        <url-pattern>/ThemNhanVien</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateNhanVienController</servlet-name>
+        <url-pattern>/UpdateNhanVien</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LuongController</servlet-name>
+        <url-pattern>/Luong</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateLuongController</servlet-name>
+        <url-pattern>/UpdateLuong</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LichSuLuongController</servlet-name>
+        <url-pattern>/Luong/LichSuLuong</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
