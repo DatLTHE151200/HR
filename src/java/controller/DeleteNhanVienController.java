@@ -6,7 +6,6 @@
 package controller;
 import DAL.*;
 import model.*;
-import java.util.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class LichSuLuongController extends HttpServlet {
+public class DeleteNhanVienController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,12 +33,9 @@ public class LichSuLuongController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         UserDAO udao = new UserDAO();
         String id = request.getParameter("id");
-        List<CapNhatLuong> listL = new ArrayList<>();
-        listL = udao.getListBangLuong(id);
-        NhanVien user = udao.getUser(id);
-        request.setAttribute("listL", listL);
-        request.setAttribute("user", user);
-        request.getRequestDispatcher("LichSuLuong.jsp").forward(request, response);
+        udao.deleteUser(id);
+        udao.deleteLuong(id);
+        response.sendRedirect("NhanVien");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

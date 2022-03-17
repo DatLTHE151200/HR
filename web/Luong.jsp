@@ -60,6 +60,7 @@
                                                     <th data-sortable="" style="width: 28.8854%;"><a href="#" class="dataTable-sorter">Lương tối thiểu</a></th>
                                                     <th data-sortable="" style="width: 15.6321%;"><a href="#" class="dataTable-sorter">Hệ số lương</a></th>
                                                     <th data-sortable="" style="width: 9.28863%;"><a href="#" class="dataTable-sorter">Phụ cấp CV</a></th>
+                                                    <th data-sortable="" style="width: 15.179%;"><a href="#" class="dataTable-sorter">Bảo hiểm</a></th>
                                                     <th data-sortable="" style="width: 15.179%;"><a href="#" class="dataTable-sorter">Thuế (%)</a></th>
                                                     <th data-sortable="" style="width: 11.4409%;"><a href="#">Số bảng lương: <%=listL.size()%></a></th>
                                                 </tr>
@@ -82,13 +83,24 @@
                                                         <%=item.getPhuCap()%>
                                                     </td>
                                                     <td>
+                                                        <table border="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>XH: <%=item.getBHXH()%>&emsp;</td>
+                                                                    <td>YT: <%=item.getBHYT()%>&emsp;</td>
+                                                                    <td>TN: <%=item.getBHTN()%></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
                                                         <%=item.getThueThuNhap()%>
                                                     </td>                                                    
                                                     <td>
                                                         <a class="btn" href="UpdateLuong.jsp?id=<%=item.getMaNhanVien()%>">
                                                             <img src="img/edit_icon.png" height="20px" width="20px"/>
                                                         </a>
-                                                        <a class="btn btn-primary" href="LichSuLuong.jsp?id=<%=item.getMaNhanVien() %>" type="submit">Lịch sử lương</a>
+                                                        <a class="btn btn-primary" href="LichSuLuong?id=<%=item.getMaNhanVien() %>" type="submit">Lịch sử lương</a>
                                                     </td>
                                                 </tr>
                                                 <%}%>

@@ -32,6 +32,14 @@
         <servlet-name>LichSuLuongController</servlet-name>
         <servlet-class>controller.LichSuLuongController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>controller.AdminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteNhanVienController</servlet-name>
+        <servlet-class>controller.DeleteNhanVienController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -62,7 +70,15 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LichSuLuongController</servlet-name>
-        <url-pattern>/Luong/LichSuLuong</url-pattern>
+        <url-pattern>/LichSuLuong</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/Admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteNhanVienController</servlet-name>
+        <url-pattern>/DeleteNhanVien</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

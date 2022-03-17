@@ -68,31 +68,49 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach var="o" items="${dao.listBangLuong}">
-                                                    <tr>
-                                                        <td>
-                                                            <c:out value="${dao.listBangLuong.maNhanVien}"></c:out>
-                                                        </td>
-                                                        <td>
-                                                            ${o.luongHienTai}
-                                                        </td>
-                                                        <td>
-                                                            ${o.luongSauCapNhat}
-                                                        </td>
-                                                        <td>
+                                                <%for (CapNhatLuong item : listL) {
+                                                        //String hv = udao.getHocVan(nhanvien.getMaTrinhDoHocVan()).getTenTrinhDo();
+%>
+                                                <%--<c:forEach var="o" items="${dao.listBangLuong}">--%>
+                                                <tr>
+                                                    <td>
+                                                        <%=item.getMaNhanVien()%>
+                                                        <%--<c:out value="${dao.listBangLuong.maNhanVien}"></c:out>--%>
+                                                    </td>
+                                                    <td>
+                                                        <%=item.getLuongHienTai()%>
+                                                        <!--${o.luongHienTai}-->
+                                                    </td>
+                                                    <td>
+                                                        <%=item.getLuongSauCapNhat()%>
+                                                        <!--${o.luongSauCapNhat}-->
+                                                    </td>
+                                                    <td>
+                                                        <table border="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>XH: <%=item.getBHXH()%>&emsp;</td>
+                                                                    <td>YT: <%=item.getBHYT()%>&emsp;</td>
+                                                                    <td>TN: <%=item.getBHTN()%>&emsp;</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <%=item.getHeSoLuong()%>
+                                                        <!--${o.heSoLuong}-->
+                                                    </td>
+                                                    <td>
 
-                                                        </td>
-                                                        <td>
-                                                            ${o.heSoLuong}
-                                                        </td>
-                                                        <td>
-                                                            ${o.thueThuNhap}
-                                                        </td>    
-                                                        <td>
-                                                            ${o.ngayCapNhat}
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
+                                                        <!--${o.thueThuNhap}-->
+                                                    </td>    
+                                                    <td>
+                                                        <%=item.getNgayCapNhat()%>
+                                                        <!--${o.ngayCapNhat}-->
+                                                    </td>
+                                                </tr>
+                                                <%}%>
+                                                <%--</c:forEach>--%>
                                             </tbody>
                                         </table>
                                     </div>

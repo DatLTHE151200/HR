@@ -546,12 +546,13 @@ public class UserDAO {
         }
     }
     
-    public List<CapNhatLuong> getListBangLuong() {
+    public List<CapNhatLuong> getListBangLuong(String id) {
         List<CapNhatLuong> list = new ArrayList<>();
-        String sql = "SELECT * FROM dbo.CapNhatLuongs";
+        String sql = "SELECT * FROM dbo.CapNhatLuongs WHERE MaNhanVien = ?";
         Connection conn = DBConnection.open();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 CapNhatLuong item = new CapNhatLuong();

@@ -92,7 +92,7 @@
                                                             <a class="btn" href="UpdateNhanVien.jsp?username=<%=nhanvien.getMaNhanVien() %>">
                                                                 <img src="img/edit_icon.png" height="20px" width="20px"/>
                                                             </a>
-                                                            <a class="btn" href="">
+                                                                <a class="btn" href="DeleteNhanVien?id=<%=nhanvien.getMaNhanVien()%>" onclick="confirm('Bạn có chắc chắn đuổi việc nhân viên này?')">
                                                                 <img src="img/trash_icon.png" height="20px" width="20px"/>
                                                             </a>
                                                         </td>
