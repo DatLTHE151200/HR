@@ -101,7 +101,7 @@
                                                         <!--${o.heSoLuong}-->
                                                     </td>
                                                     <td>
-
+                                                        <%=item.getThueThuNhap()%>
                                                         <!--${o.thueThuNhap}-->
                                                     </td>    
                                                     <td>

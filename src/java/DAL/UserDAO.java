@@ -564,6 +564,7 @@ public class UserDAO {
                 item.setBHTN(rs.getDouble("BHTN"));
                 item.setPhuCap(rs.getDouble("PhuCap"));
                 item.setThueThuNhap(rs.getDouble("ThueThuNhap"));
+                item.setHeSoLuong(rs.getDouble("HeSoLuong"));
                 item.setNgayCapNhat(rs.getDate("NgayCapNhat"));
                 list.add(item);
             }
