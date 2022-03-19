@@ -40,6 +40,10 @@
         <servlet-name>DeleteNhanVienController</servlet-name>
         <servlet-class>controller.DeleteNhanVienController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PhongBanController</servlet-name>
+        <servlet-class>controller.PhongBanController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>DeleteNhanVienController</servlet-name>
         <url-pattern>/DeleteNhanVien</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PhongBanController</servlet-name>
+        <url-pattern>/PhongBan</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -32,7 +32,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Nhân viên
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="./PhongBan">
                                 <div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>
                                 Phòng ban
                             </a>
@@ -40,7 +40,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Lương nhân viên
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Khen thưởng
                             </a>
