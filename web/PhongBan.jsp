@@ -54,7 +54,7 @@
                                     <div class="dataTable-container">
                                         <div>
                                             <a class="btn btn-primary" type="submit" href="ThemPhongBan.jsp">Thêm phòng ban</a>
-                                            <a class="btn btn-secondary" type="submit" href="CapNhatPhuCap">Cập nhật phụ cấp</a>
+                                            <!--<a class="btn btn-secondary" type="submit" href="CapNhatPhuCap">Cập nhật phụ cấp</a>-->
                                         </div>
                                         <table id="datatablesSimple" >
                                             <thead>

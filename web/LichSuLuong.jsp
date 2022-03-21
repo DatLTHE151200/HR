@@ -30,7 +30,7 @@
         </head>
     <%
         List<CapNhatLuong> listL = (List<CapNhatLuong>) request.getAttribute("listL");
-        NhanVien user = (NhanVien) request.getAttribute("user");
+        NhanVien nv = (NhanVien) request.getAttribute("nv");
     %>
     <body class="sb-nav-fixed">
         <% UserDAO udao = new UserDAO();

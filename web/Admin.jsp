@@ -4,6 +4,9 @@
     Author     : Admin
 --%>
 
+<%@page import="DAL.*"%>
+<%@page import="model.*"%>
+<%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 <!DOCTYPE html>
@@ -19,6 +22,13 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
+    <%
+        UserDAO udao = new UserDAO();
+        List<NhanVien> listNV = (List<NhanVien>) udao.getAllUser();
+        List<PhongBan> phongban = (List<PhongBan>) udao.getListPhongBan();
+        List<Luong> luong = (List<Luong>) udao.getListLuong();
+        List<TrinhDoHocVan> hocvan = (List<TrinhDoHocVan>) udao.getListHocVan();
+    %>
     <body class="sb-nav-fixed">
         <%@include file="header.jsp" %>
         <div id="layoutSidenav">
@@ -38,7 +48,7 @@
                                             Nhân viên
                                         </div>
                                         <div style="float: right">
-                                            <h1></h1>
+                                            <h1><%=listNV.size() %></h1>
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -54,7 +64,7 @@
                                             Lương
                                         </div>
                                         <div style="float: right">
-                                            <h1></h1>
+                                            <h1><h1><%=luong.size() %></h1>
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -70,7 +80,7 @@
                                             Phòng ban
                                         </div>
                                         <div style="float: right">
-                                            <h1></h1>
+                                            <h1><h1><%=phongban.size() %></h1>
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">

@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,6 +35,9 @@ public class QuaTrinhCongTacController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        NhanVien user = (NhanVien) session.getAttribute("user");
+        session.setAttribute("user", user);
         UserDAO udao = new UserDAO();
         String id = request.getParameter("id");
         List<LuanChuyenNhanVien> listCT = udao.getListCongTac(id);

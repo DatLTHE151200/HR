@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package controller;
+
 import DAL.*;
 import model.*;
 import java.util.*;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,6 +36,9 @@ public class PhongBanController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        NhanVien user = (NhanVien) session.getAttribute("user");
+        session.setAttribute("user", user);
         UserDAO udao = new UserDAO();
         List<PhongBan> listPB = udao.getListPhongBan();
         request.setAttribute("listPB", listPB);

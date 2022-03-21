@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,13 +35,16 @@ public class LichSuLuongController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        NhanVien user = (NhanVien) session.getAttribute("user");
+        session.setAttribute("user", user);
         UserDAO udao = new UserDAO();
         String id = request.getParameter("id");
         List<CapNhatLuong> listL = new ArrayList<>();
         listL = udao.getListBangLuong(id);
-        NhanVien user = udao.getUser(id);
+        NhanVien nv = udao.getUser(id);
         request.setAttribute("listL", listL);
-        request.setAttribute("user", user);
+        request.setAttribute("nv", nv);
         request.getRequestDispatcher("LichSuLuong.jsp").forward(request, response);
     }
 
