@@ -4,21 +4,21 @@
  * and open the template in the editor.
  */
 package controller;
+
 import DAL.*;
-import model.*;
-import java.util.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.*;
 
 /**
  *
  * @author Admin
  */
-public class PhongBanController extends HttpServlet {
+public class UpdatePhongBanController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,9 +35,19 @@ public class PhongBanController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         UserDAO udao = new UserDAO();
-        List<PhongBan> listPB = udao.getListPhongBan();
-        request.setAttribute("listPB", listPB);
-        request.getRequestDispatcher("PhongBan.jsp").forward(request, response);
+        PhongBan phongban = new PhongBan();
+        
+        String MaPhongBan = request.getParameter("MaPhongBan");
+        String TenPhongBan = request.getParameter("TenPhongBan");
+        String DiaChi = request.getParameter("DiaChi");
+        String sdt_PhongBan = request.getParameter("sdt_PhongBan");
+        
+        phongban.setTenPhongBan(TenPhongBan);
+        phongban.setDiaChi(DiaChi);
+        phongban.setSdt_PhongBan(sdt_PhongBan);
+        udao.updatePhongBan(phongban);
+        
+        response.sendRedirect("PhongBan");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

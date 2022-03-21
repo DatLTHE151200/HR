@@ -1,12 +1,10 @@
 <%-- 
-    Document   : UpdatePhongBan
+    Document   : ThemPhongBan
     Created on : Mar 6, 2022, 9:48:45 AM
     Author     : Admin
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-<jsp:useBean id="dao" class="DAL.UserDAO" scope="request"></jsp:useBean> 
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Cập nhật phòng ban</title>
+        <title>Thêm phòng ban</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
@@ -39,28 +37,28 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Cập nhật phòng ban</h1>
+                        <h1 class="mt-4">Thêm phòng ban</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Tổng quan</li>
                             <li class="breadcrumb-item active">Phòng ban</li>
-                            <li class="breadcrumb-item active">Cập nhật phòng ban</li>
+                            <li class="breadcrumb-item active">Thêm phòng ban</li>
                         </ol>
                         <div class="card-body">
-                            <form action="UpdatePhongBan" method="post">
+                            <form action="ThemPhongBan" method="post">
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="MaPhongBan" type="text" name="MaPhongBan" value="${dao.getPhongBan(param.id).maPhongBan}" placeholder="Mã phòng ban" readonly=""/>
+                                    <input class="form-control" id="MaPhongBan" type="text" name="MaPhongBan" value="" placeholder="Mã phòng ban" />
                                     <label for="MaPhongBan">Mã phòng ban</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="TenPhongBan" type="text" name="TenPhongBan" value="${dao.getPhongBan(param.id).tenPhongBan}"/>
+                                    <input class="form-control" id="TenPhongBan" type="text" name="TenPhongBan" value="" placeholder="Mật khẩu" required=""/>
                                     <label for="TenPhongBan">Tên phòng ban</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="ĐiaChi" type="text" name="DiaChi" value="${dao.getPhongBan(param.id).diaChi}" placeholder="" />
+                                    <input class="form-control" id="ĐiaChi" type="text" name="DiaChi" value="" placeholder="Họ tên" />
                                     <label for="ĐiaChi">Địa chỉ</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="sdt_PhongBan" type="text" name="sdt_PhongBan" value="${dao.getPhongBan(param.id).sdt_PhongBan}" placeholder="" />
+                                    <input class="form-control" id="sdt_PhongBan" type="text" name="sdt_PhongBan" value="" placeholder="Họ tên" />
                                     <label for="sdt_PhongBan">Số điện thoại</label>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mt-4 mb-0">

@@ -32,7 +32,7 @@
     %>
     <body class="sb-nav-fixed">
         <%! UserDAO udao = new UserDAO();
-                    %>
+                                %>
         <%@include file="header.jsp" %>
         <div id="layoutSidenav">
             <%@include file="menu.jsp" %>
@@ -79,9 +79,14 @@
                                                         <%=phongban.getDiaChi()%>
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-primary" href="DanhSachNhanVien?id=<%=phongban.getMaPhongBan() %>" type="submit">Danh sách nhân viên</a>
-                                                        <a class="btn" href="">
+                                                        <a class="btn btn-primary" href="DanhSachNhanVien?id=<%=phongban.getMaPhongBan()%>" type="submit">Danh sách nhân viên</a>
+                                                        <a class="btn" href="UpdatePhongBan.jsp?id=<%=phongban.getMaPhongBan()%>">
                                                             <img src="img/edit_icon.png" height="20px" width="20px"/>
+                                                        </a>
+                                                        <a href="DeletePhongBan?id=<%=phongban.getMaPhongBan()%>">
+                                                            <button type="button" class="btn" style="border: 0; background-color: transparent" onclick="confirm('Bạn có chắc chắn xoá bỏ phòng ban này?')">
+                                                                <img src="img/trash_icon.png" height="20px" width="20px"/>
+                                                            </button>
                                                         </a>
                                                     </td>
                                                 </tr>

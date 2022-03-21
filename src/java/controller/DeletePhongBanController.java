@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package controller;
-import DAL.*;
-import model.*;
-import java.util.*;
+
+import DAL.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class PhongBanController extends HttpServlet {
+public class DeletePhongBanController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,13 +30,14 @@ public class PhongBanController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         UserDAO udao = new UserDAO();
-        List<PhongBan> listPB = udao.getListPhongBan();
-        request.setAttribute("listPB", listPB);
-        request.getRequestDispatcher("PhongBan.jsp").forward(request, response);
+        String id = request.getParameter("id");
+        udao.deletePhongBan(id);
+        response.sendRedirect("PhongBan");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -56,6 +56,18 @@
         <servlet-name>ChuyenNhanVienController</servlet-name>
         <servlet-class>controller.ChuyenNhanVienController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ThemPhongBanController</servlet-name>
+        <servlet-class>controller.ThemPhongBanController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePhongBanController</servlet-name>
+        <servlet-class>controller.UpdatePhongBanController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletePhongBanController</servlet-name>
+        <servlet-class>controller.DeletePhongBanController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -111,6 +123,18 @@
     <servlet-mapping>
         <servlet-name>ChuyenNhanVienController</servlet-name>
         <url-pattern>/ChuyenNhanVien</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ThemPhongBanController</servlet-name>
+        <url-pattern>/ThemPhongBan</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePhongBanController</servlet-name>
+        <url-pattern>/UpdatePhongBan</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePhongBanController</servlet-name>
+        <url-pattern>/DeletePhongBan</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

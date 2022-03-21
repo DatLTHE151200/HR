@@ -307,6 +307,65 @@ public class UserDAO {
         return list;
     }
 
+    public void insertPhongBan(PhongBan phongban) {
+        String sql = "INSERT INTO dbo.PhongBans\n"
+                + "(\n"
+                + "    MaPhongBan,\n"
+                + "    TenPhongBan,\n"
+                + "    DiaChi,\n"
+                + "    sdt_PhongBan\n"
+                + ")\n"
+                + "VALUES\n"
+                + "(   ?,  -- MaPhongBan - varchar(30)\n"
+                + "    ?, -- TenPhongBan - nvarchar(50)\n"
+                + "    ?, -- DiaChi - nvarchar(50)\n"
+                + "    ?  -- sdt_PhongBan - varchar(11)\n"
+                + "    )";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, phongban.getMaPhongBan());
+            ps.setString(2, phongban.getTenPhongBan());
+            ps.setString(3, phongban.getDiaChi());
+            ps.setString(4, phongban.getSdt_PhongBan());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updatePhongBan(PhongBan phongban) {
+        String sql = "UPDATE dbo.PhongBans\n"
+                + "SET\n"
+                + "TenPhongBan = ?,\n"
+                + "DiaChi = ?,\n"
+                + "sdt_PhongBan = ?\n"
+                + "WHERE MaPhongBan = ?";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, phongban.getTenPhongBan());
+            ps.setString(2, phongban.getDiaChi());
+            ps.setString(3, phongban.getSdt_PhongBan());
+            ps.setString(4, phongban.getMaPhongBan());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void deletePhongBan(String id) {
+        String sql = "DELETE FROM dbo.PhongBans WHERE MaPhongBan = ?";
+        Connection conn = DBConnection.open();
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public ChuyenNganh getChuyenNganh() {
         String sql = "SELECT * FROM dbo.ChuyenNganhs WHERE MaChuyenNganh = ?";
         Connection conn = DBConnection.open();
