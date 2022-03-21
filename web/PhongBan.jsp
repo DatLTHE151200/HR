@@ -54,7 +54,7 @@
                                     <div class="dataTable-container">
                                         <div>
                                             <a class="btn btn-primary" type="submit" href="ThemPhongBan.jsp">Thêm phòng ban</a>
-                                            <a class="btn btn-primary" type="submit" href="CapNhatPhuCap">Cập nhật phụ cấp</a>
+                                            <a class="btn btn-secondary" type="submit" href="CapNhatPhuCap">Cập nhật phụ cấp</a>
                                         </div>
                                         <table id="datatablesSimple" >
                                             <thead>
@@ -79,12 +79,9 @@
                                                         <%=phongban.getDiaChi()%>
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-primary" href="ListNhanVienPhongBan?id=<%=phongban.getMaPhongBan() %>" type="submit">Danh sách nhân viên</a>
+                                                        <a class="btn btn-primary" href="DanhSachNhanVien?id=<%=phongban.getMaPhongBan() %>" type="submit">Danh sách nhân viên</a>
                                                         <a class="btn" href="">
                                                             <img src="img/edit_icon.png" height="20px" width="20px"/>
-                                                        </a>
-                                                        <a class="btn" href="">
-                                                            <img src="img/trash_icon.png" height="20px" width="20px"/>
                                                         </a>
                                                     </td>
                                                 </tr>

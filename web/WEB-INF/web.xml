@@ -44,6 +44,18 @@
         <servlet-name>PhongBanController</servlet-name>
         <servlet-class>controller.PhongBanController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DanhSachNhanVienController</servlet-name>
+        <servlet-class>controller.DanhSachNhanVienController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuaTrinhCongTacController</servlet-name>
+        <servlet-class>controller.QuaTrinhCongTacController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChuyenNhanVienController</servlet-name>
+        <servlet-class>controller.ChuyenNhanVienController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -87,6 +99,18 @@
     <servlet-mapping>
         <servlet-name>PhongBanController</servlet-name>
         <url-pattern>/PhongBan</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DanhSachNhanVienController</servlet-name>
+        <url-pattern>/DanhSachNhanVien</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuaTrinhCongTacController</servlet-name>
+        <url-pattern>/QuaTrinhCongTac</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChuyenNhanVienController</servlet-name>
+        <url-pattern>/ChuyenNhanVien</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -20,8 +20,8 @@ public class test {
     public static void main(String args[]) {
         try {
             UserDAO udao = new UserDAO();
-            Luong hv = udao.getLuong("nhm");
-            System.out.println(hv.getLuongToiThieu());
+            NhanVien hv = udao.getUser("moi");
+            System.out.println(hv.getNgaySinh());
 //            for (TrinhDoHocVan hv : list) {
 //                System.out.println(hv.getMaTrinhDoHocVan() + ' ' + hv.getTenTrinhDo());
 //            }

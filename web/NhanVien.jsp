@@ -29,6 +29,8 @@
         </head>
     <%
         List<NhanVien> listNV = (List<NhanVien>) request.getAttribute("listNV");
+        UserDAO udao = new UserDAO();
+        List<TrinhDoHocVan> listHV = udao.getListHocVan();
     %>
     <body class="sb-nav-fixed">
         <%! UserDAO udao = new UserDAO();
@@ -69,7 +71,7 @@
                                             </thead>
                                             <tbody>
                                                 <%for (NhanVien nhanvien : listNV) {
-                                                        //String hv = udao.getHocVan(nhanvien.getMaTrinhDoHocVan()).getTenTrinhDo();
+//                                                    String hv = udao.getHocVan(nhanvien.getMaTrinhDoHocVan()).getTenTrinhDo();
                                                 %>
                                                 <tr>
                                                     <td>
@@ -89,11 +91,14 @@
                                                     </td>
                                                     <%if (nhanvien.getTrangThai() != 1) {%>
                                                     <td>
+                                                        <a class="btn btn-primary" href="QuaTrinhCongTac?id=<%=nhanvien.getMaNhanVien()%>" type="submit">Quá trình công tác</a>
                                                         <a class="btn" href="UpdateNhanVien.jsp?username=<%=nhanvien.getMaNhanVien()%>">
                                                             <img src="img/edit_icon.png" height="20px" width="20px"/>
                                                         </a>
-                                                        <a class="btn" href="DeleteNhanVien?id=<%=nhanvien.getMaNhanVien()%>" onclick="confirm('Bạn có chắc chắn đuổi việc nhân viên này?')">
-                                                            <img src="img/trash_icon.png" height="20px" width="20px"/>
+                                                        <a href="DeleteNhanVien?id=<%=nhanvien.getMaNhanVien()%>">
+                                                            <button type="button" class="btn" style="border: 0; background-color: transparent" onclick="confirm('Bạn có chắc chắn đuổi việc nhân viên này?')">
+                                                                <img src="img/trash_icon.png" height="20px" width="20px"/>
+                                                            </button>
                                                         </a>
                                                     </td>
                                                     <%}%>
