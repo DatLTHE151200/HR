@@ -41,8 +41,8 @@
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="index.html">Login</a>
+                                                <a class="small" href="#">Forgot Password?</a>
+                                                <button class="btn btn-primary" type="submit" >Login</button>
                                             </div>
                                         </form>
                                     </div>

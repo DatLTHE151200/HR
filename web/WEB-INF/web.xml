@@ -141,7 +141,7 @@
         <url-pattern>/DeletePhongBan</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>Admin.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>

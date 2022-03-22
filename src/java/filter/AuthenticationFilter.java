@@ -40,7 +40,6 @@ public class AuthenticationFilter implements Filter {
         if (debug) {
             log("AuthenticationFilter:DoBeforeProcessing");
         }
-
         // Write code here to process the request and/or response before
         // the rest of the filter chain is invoked.
         // For example, a logging filter might log items on the request object,
@@ -118,12 +117,11 @@ public class AuthenticationFilter implements Filter {
                 UserDAO udao = new UserDAO();
                 List<NhanVien> users = udao.getAllUser();
                 for (NhanVien user : users) {
-                    if (user.getMaNhanVien().equals(username)) {
+                    if (user.getMaNhanVien().equals(username)&&user.getTrangThai()==1) {
                         request.setAttribute("error", "Incorrect password !");
                         if (user.getMatKhau().equals(password)) {
                             check = true;
                             request.setAttribute("user", user);
-                            
                         }
                         break;
                     }

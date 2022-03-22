@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package controller;
+import DAL.UserDAO;
 import model.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,10 +34,25 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        NhanVien user = (NhanVien) request.getAttribute("user");
-        session.setAttribute("user", user);
-        request.setAttribute("user", user);
-        request.getRequestDispatcher("Admin.jsp").forward(request, response);
+        String username = request.getParameter("Username");
+            if (username != null) {
+                request.setAttribute("error", "Username doesn't exist !");
+                boolean check = false;
+                String password = request.getParameter("Password");
+                UserDAO udao = new UserDAO();
+                List<NhanVien> users = udao.getAllUser();
+                for (NhanVien user : users) {
+                        if (user.getMaNhanVien().equals(username)&&user.getMatKhau().equals(password)&&user.getTrangThai()==1) {
+                            check = true;
+                            request.setAttribute("user", user);
+                            session.setAttribute("user", user);
+                            response.sendRedirect("Admin.jsp");
+                        }
+                }
+            } else {
+                response.sendRedirect("login.jsp");
+                //equest.getRequestDispatcher("login.jsp").forward(request, response);
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
