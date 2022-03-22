@@ -235,7 +235,8 @@ CREATE TABLE [dbo].[NhanViens] (
     [MaHopDong] varchar(30)  NULL,
     [MaChuyenNganh] varchar(30)  NULL,
     [MaTrinhDoHocVan] varchar(30)  NULL,
-    [CMND] varchar(50)  NULL
+    [CMND] varchar(50)  NULL,
+    [NgayNghi] int  NULL
 );
 GO
 

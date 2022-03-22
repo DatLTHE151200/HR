@@ -76,7 +76,6 @@ public class ThemNhanVien extends HttpServlet {
 
         Luong luong = new Luong(MaNhanVien, 3000000, HeSoLuong, 8, 1.5, 1, PhuCap, 0);
         udao.insertLuong(luong);
-
         response.sendRedirect("NhanVien");
     }
 
