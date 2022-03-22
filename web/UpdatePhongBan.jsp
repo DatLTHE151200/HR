@@ -64,7 +64,7 @@
                                     <label for="sdt_PhongBan">Số điện thoại</label>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                    <button class="btn btn-primary" type="submit" >Thêm phòng ban</button>
+                                    <button class="btn btn-primary" type="submit" >Lưu thay đổi</button>
                                 </div>
                             </form>
                         </div>
