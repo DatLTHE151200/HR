@@ -34,6 +34,7 @@ public class LoginController extends HttpServlet {
         HttpSession session = request.getSession();
         NhanVien user = (NhanVien) request.getAttribute("user");
         session.setAttribute("user", user);
+        request.setAttribute("user", user);
         request.getRequestDispatcher("Admin.jsp").forward(request, response);
     }
 

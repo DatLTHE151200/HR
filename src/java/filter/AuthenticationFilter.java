@@ -17,6 +17,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -108,6 +109,7 @@ public class AuthenticationFilter implements Filter {
         
         Throwable problem = null;
         try {
+//            HttpSession session = request.getSession();
             String username = request.getParameter("Username");
             if (username != null) {
                 request.setAttribute("error", "Username doesn't exist !");
@@ -121,6 +123,7 @@ public class AuthenticationFilter implements Filter {
                         if (user.getMatKhau().equals(password)) {
                             check = true;
                             request.setAttribute("user", user);
+                            
                         }
                         break;
                     }
