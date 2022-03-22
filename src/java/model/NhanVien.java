@@ -26,11 +26,12 @@ public class NhanVien {
     private String MaChuyenNganh;
     private String MaTrinhDoHocVan;
     private String CMND;
+    private int NgayNghi;
 
     public NhanVien() {
     }
 
-    public NhanVien(String MaNhanVien, String MatKhau, String HoTen, Date NgaySinh, String QueQuan, String HinhAnh, int GioiTinh, String DanToc, String sdt_NhanVien, String MaChucVuNV, int TrangThai, String MaPhongBan, String MaHopDong, String MaChuyenNganh, String MaTrinhDoHocVan, String CMND) {
+    public NhanVien(String MaNhanVien, String MatKhau, String HoTen, Date NgaySinh, String QueQuan, String HinhAnh, int GioiTinh, String DanToc, String sdt_NhanVien, String MaChucVuNV, int TrangThai, String MaPhongBan, String MaHopDong, String MaChuyenNganh, String MaTrinhDoHocVan, String CMND, int NgayNghi) {
         this.MaNhanVien = MaNhanVien;
         this.MatKhau = MatKhau;
         this.HoTen = HoTen;
@@ -47,6 +48,7 @@ public class NhanVien {
         this.MaChuyenNganh = MaChuyenNganh;
         this.MaTrinhDoHocVan = MaTrinhDoHocVan;
         this.CMND = CMND;
+        this.NgayNghi = NgayNghi;
     }
 
     
@@ -179,6 +181,14 @@ public class NhanVien {
 
     public void setCMND(String CMND) {
         this.CMND = CMND;
+    }
+
+    public int getNgayNghi() {
+        return NgayNghi;
+    }
+
+    public void setNgayNghi(int NgayNghi) {
+        this.NgayNghi = NgayNghi;
     }
     
     

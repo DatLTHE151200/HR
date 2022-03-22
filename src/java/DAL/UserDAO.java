@@ -48,6 +48,7 @@ public class UserDAO {
                 user.setMaChuyenNganh(rs.getString("MaChuyenNganh"));
                 user.setMaTrinhDoHocVan(rs.getString("MaTrinhDoHocVan"));
                 user.setCMND(rs.getString("CMND"));
+                user.setNgayNghi(rs.getInt("NgayNghi"));
                 return user;
             }
         } catch (SQLException e) {
@@ -82,6 +83,7 @@ public class UserDAO {
                 user.setMaChuyenNganh(rs.getString("MaChuyenNganh"));
                 user.setMaTrinhDoHocVan(rs.getString("MaTrinhDoHocVan"));
                 user.setCMND(rs.getString("CMND"));
+                user.setNgayNghi(rs.getInt("NgayNghi"));
                 userList.add(user);
             }
         } catch (SQLException e) {
@@ -111,7 +113,8 @@ public class UserDAO {
                 + "    MaHopDong,\n"
                 + "    MaChuyenNganh,\n"
                 + "    MaTrinhDoHocVan,\n"
-                + "    CMND\n"
+                + "    CMND,\n"
+                + "    NgayNghi\n"
                 + ")\n"
                 + "VALUES\n"
                 + "(   ?,        -- MaNhanVien - varchar(30)\n"
@@ -129,7 +132,8 @@ public class UserDAO {
                 + "    ?,        -- MaHopDong - varchar(30)\n"
                 + "    ?,        -- MaChuyenNganh - varchar(30)\n"
                 + "    ?,        -- MaTrinhDoHocVan - varchar(30)\n"
-                + "    ?         -- CMND - varchar(50)\n"
+                + "    ?,         -- CMND - varchar(50)\n"
+                + "    ? -- NgayNghi - int\n"
                 + "    )";
         Connection conn = DBConnection.open();
         try {
@@ -152,6 +156,7 @@ public class UserDAO {
             ps.setString(14, user.getMaChuyenNganh());
             ps.setString(15, user.getMaTrinhDoHocVan());
             ps.setString(16, user.getCMND());
+            ps.setInt(17, user.getNgayNghi());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -176,12 +181,13 @@ public class UserDAO {
                 + "MaHopDong = ?,\n"
                 + "MaChuyenNganh = ?,\n"
                 + "MaTrinhDoHocVan = ?,\n"
-                + "CMND = ?\n"
+                + "CMND = ?, \n"
+                + "NgayNghi = ?\n"
                 + "WHERE MaNhanVien = ?";
         Connection conn = DBConnection.open();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(16, user.getMaNhanVien());
+            ps.setString(17, user.getMaNhanVien());
             ps.setString(1, user.getMatKhau());
             ps.setString(2, user.getHoTen());
             long sn = user.getNgaySinh().getTime();
@@ -199,6 +205,7 @@ public class UserDAO {
             ps.setString(13, user.getMaChuyenNganh());
             ps.setString(14, user.getMaTrinhDoHocVan());
             ps.setString(15, user.getCMND());
+            ps.setInt(16, user.getNgayNghi());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

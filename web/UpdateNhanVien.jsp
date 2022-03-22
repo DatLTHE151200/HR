@@ -32,7 +32,7 @@
         <%
             UserDAO udao = new UserDAO();
             String id = (String) request.getAttribute("username");
-            List<TrinhDoHocVan > hocvan = (List<TrinhDoHocVan>) udao.getListHocVan();
+            List<TrinhDoHocVan> hocvan = (List<TrinhDoHocVan>) udao.getListHocVan();
             List<ChuyenNganh> chuyennganh = (List<ChuyenNganh>) udao.getListChuyenNganh();
         %>
         <%@include file="header.jsp" %>
@@ -61,6 +61,10 @@
                                 <div class="form-floating mb-3">
                                     <input class="form-control" id="HoTen" type="text" name="HoTen" value="${dao.getUser(param.username).hoTen}" placeholder="Họ tên" />
                                     <label for="HoTen">Họ tên</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="HoTen" type="number" name="NgayNghi" value="${dao.getUser(param.username).ngayNghi}" placeholder="Họ tên" />
+                                    <label for="HoTen">Số ngày nghỉ</label>
                                 </div>
                                 <table border="0">
                                     <tbody>

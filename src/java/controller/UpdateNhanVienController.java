@@ -51,6 +51,8 @@ public class UpdateNhanVienController extends HttpServlet {
         String HoTen = request.getParameter("HoTen");
         String ngaysinh = request.getParameter("NgaySinh");
         Date NgaySinh = format.parse(ngaysinh);
+        String ngaynghi = request.getParameter("NgayNghi");
+        int NgayNghi = Integer.parseInt(ngaynghi);
         String gender = request.getParameter("GioiTinh");
         int GioiTinh = Integer.parseInt(gender);
         String ChuyenNganh = request.getParameter("ChuyenNganh");
@@ -61,6 +63,7 @@ public class UpdateNhanVienController extends HttpServlet {
         nv.setMatKhau(password);
         nv.setHoTen(HoTen);
         nv.setNgaySinh(NgaySinh);
+        nv.setNgayNghi(NgayNghi);
         nv.setGioiTinh(GioiTinh);
         nv.setMaChuyenNganh(ChuyenNganh);
         nv.setMaTrinhDoHocVan(TrinhDoHocVan);

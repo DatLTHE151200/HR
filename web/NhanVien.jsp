@@ -66,6 +66,7 @@
                                                     <th data-sortable="" style="width: 15.6321%;"><a href="#" class="dataTable-sorter">Học vấn</a></th>
                                                     <th data-sortable="" style="width: 9.28863%;"><a href="#" class="dataTable-sorter">Giới tính</a></th>
                                                     <th data-sortable="" style="width: 15.179%;"><a href="#" class="dataTable-sorter">Ngày sinh</a></th>
+                                                    <th data-sortable="" style="width: 15.6321%;"><a href="#" class="dataTable-sorter">Ngày nghỉ</a></th>
                                                     <th data-sortable="" style="width: 11.4409%;"><a href="#">Số lượng: <%=listNV.size()%></a></th>
                                                 </tr>
                                             </thead>
@@ -88,6 +89,9 @@
                                                     </td>
                                                     <td>
                                                         <%=nhanvien.getNgaySinh()%>
+                                                    </td>
+                                                    <td>
+                                                        <%=nhanvien.getNgayNghi()%>
                                                     </td>
                                                     <%if (nhanvien.getTrangThai() != 1) {%>
                                                     <td>
